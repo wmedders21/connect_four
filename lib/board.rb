@@ -1,12 +1,24 @@
 require 'pry'
 require 'rspec'
 class Board
-#  attr_reader :columns, :rows
+ attr_reader :board, :column
  def initialize
+   @column
+   @board
  end
-#puts "ABCDEFG\n.......\n.......\n.......\n.......\n.......\n.......\n......."
   def start
-    board =   ("ABCDEFG\n.......\n.......\n.......\n.......\n.......\n.......\n.......").split
-    puts board
+    @column = ["A","B","C","D","E","F","G"]
+    @board = [
+      [".",".",".",".",".",".","."],
+      [".",".",".",".",".",".","."],
+      [".",".",".",".",".",".","."],
+      [".",".",".",".",".",".","."],
+      [".",".",".",".",".",".","."],
+      [".",".",".",".",".",".","."]
+    ]
+    puts @column.join
+     @board.each do |row|
+       puts row.join
+     end
   end
 end
