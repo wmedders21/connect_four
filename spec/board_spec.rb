@@ -1,10 +1,11 @@
 require 'rspec'
 require 'pry'
+require './lib/cell'
 require './lib/board'
 
 RSpec.describe Board do
-  new_game = board.new
   it "creates a board class" do
-    expect(new_game).to be_an_instance_of(Board)
+    board1 = Board.new
+    expect(board1).to be_an_instance_of(Board)
   end
 end

@@ -1,12 +1,9 @@
 require 'pry'
 require 'rspec'
+require './lib/cell'
 class Board
-#  attr_reader :columns, :rows
- def initialize
- end
-#puts "ABCDEFG\n.......\n.......\n.......\n.......\n.......\n.......\n......."
-  def start
-    board =   ("ABCDEFG\n.......\n.......\n.......\n.......\n.......\n.......\n.......").split
-    puts board
+  attr_reader
+  def initialize
+
   end
 end
