@@ -37,12 +37,12 @@ class Board
 #snapshot creates a savestate of the matrix after moves have been played
 #Useful for making the spots_empty method work properly
   def snapshot
-    @columns = @matrix.transpose
+    return @matrix.transpose
   end
 #spots_empty() counts the number of available spaces in a particular column
-  def spots_empty(column)
+  def cells_empty(column_location)
     snapshot
-    @columns[column].count do |empty_cell|
+    @columns[column_location].count do |empty_cell|
       empty_cell == ". "
     end
   end

@@ -1,12 +1,20 @@
+require './lib/board'
+
 class Column
-  attr_reader :column
-  def initialize(location)
+  attr_reader :column, :cells_empty
+  def initialize(location, cells_empty)
     @column = location
+    @cells_empty = cells_empty
   end
 
+
   def playable?
-    # if board.spots_empty(@column) != 0
-    # end
+    self
+    if @cells_empty != 0
+      true
+    else
+      false
+    end
   end
 
 end

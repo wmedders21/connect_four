@@ -50,7 +50,7 @@ RSpec.describe Board do
      expect(new_game.columns[5].include?("X ")).to eq(true)
      expect(new_game.columns[3].include?("O ")).to eq(true)
      expect(new_game.matrix[5].include?("X ")).to eq(true)
-     expect(new_game.matrix[2].include?("O ")).to eq(true) 
+     expect(new_game.matrix[2].include?("O ")).to eq(true)
 
    end
 
@@ -59,7 +59,7 @@ RSpec.describe Board do
     new_game.render
     new_game.add_x(5,5)
     # binding.pry
-    expect(new_game.spots_empty(5)).to eq(5)
+    expect(new_game.cells_empty(5)).to eq(5)
   end
 
 end
