@@ -1,24 +1,49 @@
 require 'pry'
 require 'rspec'
+# require './lib/grid_map'
+
 class Board
- attr_reader :board, :column
- def initialize
-   @column
-   @board
- end
-  def start
-    @column = ["A","B","C","D","E","F","G"]
-    @board = [
-      [".",".",".",".",".",".","."],
-      [".",".",".",".",".",".","."],
-      [".",".",".",".",".",".","."],
-      [".",".",".",".",".",".","."],
-      [".",".",".",".",".",".","."],
-      [".",".",".",".",".",".","."]
+  attr_reader :matrix, :header, :columns
+  def initialize
+#header is just the letters above the matrix. No functionality
+    @header = ["A ","B ","C ","D ","E ","F ","G "]
+#matrix is our 2d array
+    @matrix = [
+      [". ",". ",". ",". ",". ",". ",". "],
+      [". ",". ",". ",". ",". ",". ",". "],
+      [". ",". ",". ",". ",". ",". ",". "],
+      [". ",". ",". ",". ",". ",". ",". "],
+      [". ",". ",". ",". ",". ",". ",". "],
+      [". ",". ",". ",". ",". ",". ",". "]
     ]
-    puts @column.join
-     @board.each do |row|
-       puts row.join
-     end
+#columns allows us access to the y axis in array form
+    @columns = @matrix.transpose
+  end
+#render prints the header and matrix during gameplay
+  def render
+    puts @header.join
+    @matrix.each do |row|
+      puts row.join
+    end
+  end
+#add_x takes coordinate arguments and places an X on the board
+  def add_x(row, column)
+    @matrix[row][column] = "X "
+  end
+  #add_o takes coordinate arguments and places an O on the board
+  def add_o(row, column)
+    @matrix[row][column] = "O "
+  end
+#snapshot creates a savestate of the matrix after moves have been played
+#Useful for making the spots_empty method work properly
+  def snapshot
+    @columns = @matrix.transpose
+  end
+#spots_empty() counts the number of available spaces in a particular column
+  def spots_empty(column)
+    snapshot
+    @columns[column].count do |empty_cell|
+      empty_cell == ". "
+    end
   end
 end
