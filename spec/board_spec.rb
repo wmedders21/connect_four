@@ -42,7 +42,7 @@ RSpec.describe Board do
 
   end
 
-   it 'can take a snapshot of the current play state' do
+   xit 'can take a snapshot of the current play state' do
      new_game = Board.new
      new_game.add_x(5,5)
      new_game.add_o(2,3)
@@ -54,7 +54,7 @@ RSpec.describe Board do
 
    end
 
-  it 'can check how many empty cells are in a column' do
+  xit 'can check how many empty cells are in a column' do
     new_game = Board.new
     new_game.render
     new_game.add_x(5,5)
