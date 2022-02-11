@@ -3,7 +3,7 @@ require 'rspec'
 # require './lib/grid_map'
 
 class Board
-  attr_reader :matrix, :header, :columns
+  attr_reader :matrix, :header#, :columns
   def initialize
 #header is just the letters above the matrix. No functionality
     @header = ["A ","B ","C ","D ","E ","F ","G "]
@@ -17,7 +17,7 @@ class Board
       [". ",". ",". ",". ",". ",". ",". "]
     ]
 #columns allows us access to the y axis in array form
-    @columns = @matrix.transpose
+    # @columns = @matrix.transpose
   end
 #render prints the header and matrix during gameplay
   def render
@@ -36,16 +36,16 @@ class Board
   end
 #snapshot creates a savestate of the matrix after moves have been played
 #Useful for making the spots_empty method work properly
-  def snapshot
-    @columns = @matrix.transpose
-  end
+  # def snapshot
+  #   return @matrix.transpose
+  # end
 #spots_empty() counts the number of available spaces in a particular column
-  def spots_empty(column)
-    snapshot
-    @columns[column].count do |empty_cell|
-      empty_cell == ". "
-    end
-  end
+  # def cells_empty(column_location)
+  #   snapshot
+  #   @columns[column_location].count do |empty_cell|
+  #     empty_cell == ". "
+  #   end
+  # end
 end
 # could add another method move_valid?
 # if spots_empty.count >= 1
