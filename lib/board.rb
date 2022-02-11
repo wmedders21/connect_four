@@ -34,6 +34,10 @@ class Board
   def add_o(row, column)
     @matrix[row][column] = "O "
   end
+
+  # def win_scan
+  #   @matrix.find do |row|
+  #     row.join.include?("X X X X ")
 #snapshot creates a savestate of the matrix after moves have been played
 #Useful for making the spots_empty method work properly
   # def snapshot

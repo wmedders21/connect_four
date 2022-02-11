@@ -1,0 +1,1 @@
+coordinates = Hash.new
