@@ -47,3 +47,13 @@ class Board
     end
   end
 end
+# could add another method move_valid?
+# if spots_empty.count >= 1
+# return true
+#
+# and another method for placing the piece:
+# def place_piece
+# if player_type = "human" && move_valid == true
+#  add_x
+# else
+# add_o
