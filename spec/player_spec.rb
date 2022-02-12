@@ -17,6 +17,5 @@ RSpec.describe Player do
     player = Player.new("human")
 #binding.pry
     expect(player.turn_mode).to eq("human")
-
   end
 end
