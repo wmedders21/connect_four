@@ -1,38 +1,14 @@
 require 'pry'
-require './column'
-require './board'
+
+#other requires go here
 
 class Player
-  attr_reader :type, :user_input, :robot_input
+  attr_reader :type, :turn_mode
   def initialize(type)
     @type = type
-    @user_input = user_input
-    @robot_input = robot_input
+    @turn_mode = type
   end
 
-  def user_input
-    if type == "human"
-      puts "Your move, human:\n>"
-      user_input = gets.chomp.upcase
-      move_valid?(user_input)
-    end
-  end
+  #I had more shit here to start, but most of it became redundant because I think we could handle what the player needs to do with just an attr_reader. Really just telling Turn what kind of turn it is. We can pass Turn the player.turn_mode value (right now it's a string, "human") and Turn can take it from there, determine column choice and pass it to column to check if it's playable.
 
-  def move_valid?
-    if column.spots_empty.count >=1
-      board.add_x(***, user_input)
-    else puts "This is an invalid move. Please select a column with open spots."
-      user_input
-    end
-    #need logic for the row to be filled starting
-    #at the bottom and working up.
-  end
-
-  def robot_input
-      puts "It's the robot's turn:\n>"
-      robot_input = ["A", "B", "C", "D", "E", "F", "G"].sample
-      board.add_o(***, robot_input)
-  end
-  #need logic for the row to be filled starting
-  #at the bottom and working up.
 end
