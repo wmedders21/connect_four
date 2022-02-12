@@ -27,13 +27,56 @@ def render
   f = Column.new(@board.matrix.transpose[5])
   g = Column.new(@board.matrix.transpose[6])
 end
-render
-user.pick_column
-#1.make sure that we can't play on a full column or 
+#1.make sure that we can't play on a full column or
 #2.translate what user enters to a value (x,y)
 #then use that return value to set argument for the method below
+render
+user.pick_column
 board.add_x(5,0)
 render
 bot.pick_column
 board.add_o(4,0)
+render
+user.pick_column
+board.add_x(5,1)
+render
+bot.pick_column
+board.add_o(4,1)
+render
+user.pick_column
+board.add_x(5,2)
+render
+bot.pick_column
+board.add_o(4,2)
+render
+user.pick_column
+board.add_x(5,3)
+render
+bot.pick_column
+board.add_o(4,3)
+board.win_scan
+render
+user.pick_column
+board.add_x(5,4)
+board.win_scan
+render
+bot.pick_column
+board.add_o(4,4)
+board.win_scan
+render
+user.pick_column
+board.add_x(5,5)
+board.win_scan
+render
+bot.pick_column
+board.add_o(4,5)
+board.win_scan
+render
+user.pick_column
+board.add_x(5,6)
+board.win_scan
+render
+bot.pick_column
+board.add_o(4,6)
+board.win_scan
 render

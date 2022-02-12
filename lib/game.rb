@@ -19,7 +19,7 @@ end
 #bottom?| => render => scan for a winner => if true declare winner -- endgame => if false, continue turn
 #using the computer turn => computer chooses random column => column.playable? => if false, return
 #to the choice sample method until we have a playable choice => pass choice value to board method
-#add_o => render => scan for a winner. =>if no winner go back to the beginning (human turn).
+#add_o => render => scan for a winner. => if no winner go back to the beginning (human turn).
 
 
 #if winner: break out of the turn loop => print a congratulatory statement and peace out

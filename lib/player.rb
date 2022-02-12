@@ -15,7 +15,7 @@ class Player
 
     else
       puts "Now it's the Computer's turn. Press 'Return'"
-      gets.chomp
+      sleep(2)
       @column_choice = ["a", "b", "c", "d", "e", "f", "g"].sample
     end
   end
