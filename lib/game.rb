@@ -20,6 +20,8 @@ class Game
   end
 
 def start
+  @board.render
+  if 
 end
 
 
