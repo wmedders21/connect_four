@@ -1,12 +1,14 @@
 require 'pry'
 require './player'
+require './column'
 #other requires go here
 
 class Turn
-  attr_reader :player_type, :column_choice
+  attr_reader :player_type, :column_choice, :counter
   def initialize(player_type)
       @player_type = player_type
       @column_choice = column_choice
+      @counter = 0
   end
 
   # def user_turn
@@ -24,13 +26,20 @@ class Turn
   # end #this can be passed to the column class to run .playable?
 
   def user_turn
+    @counter += 1
     if @player_type == :human
       puts "Please select a column:"
         column_choice = gets.chomp
       else
+        @counter += 1
         puts "It's the robot's turn!"
         column_choice = (["A ","B ","C ","D ","E ","F ","G "]).sample
       end
+    end
+
+    def pick_column
+      player_column_choice = user_turn
+      return player_column_choice
     end
 
 end
