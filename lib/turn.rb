@@ -33,7 +33,7 @@ class Turn
       else
         @counter += 1
         puts "It's the robot's turn!"
-        column_choice = (["A ","B ","C ","D ","E ","F ","G "]).sample
+        column_choice = (["a ","b ","c ","d ","e ","f ","g "]).sample
       end
     end
 
