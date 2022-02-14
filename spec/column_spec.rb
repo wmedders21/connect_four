@@ -1,5 +1,7 @@
 require 'rspec'
 require 'pry'
+require './lib/player'
+require './lib/turn'
 require './lib/board'
 require './lib/column'
 
@@ -30,7 +32,7 @@ RSpec.describe Column do
     board.add_x(5,0)
     #column
     a = Column.new(board.matrix.transpose[0])
-    binding.pry
+    #binding.pry
 
     expect(a.playable?).to eq(false)
 
