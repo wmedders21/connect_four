@@ -26,12 +26,15 @@ class Turn
   def user_turn
     if @player_type == :human
       puts "Please select a column:"
-        column_choice = gets.chomp
-      else
-        puts "It's the robot's turn!"
-        column_choice = (["A ","B ","C ","D ","E ","F ","G "]).sample
+      column_choice = gets.chomp.downcase
+      until "abcdefg".include?(column_choice)
+        puts "Please select a column A - G"
       end
+    else
+      puts "It's the robot's turn!"
+      column_choice = (["a", "b", "c", "d", "e", "f", "g"]).sample
     end
+  end
 
 end
 
