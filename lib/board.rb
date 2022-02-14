@@ -35,7 +35,7 @@ class Board
     @matrix[row][column] = "O "
   end
 
-  def win_scan
+  def diagonal_win_scan
     m = @matrix
     d1 = [m[3][0], m[2][1], m[1][2], m[0][3]]
     d2 = [m[4][0], m[3][1], m[2][2], m[1][3], m[0][4]]
@@ -50,42 +50,71 @@ class Board
     d11 = [m[0][2], m[1][3], m[2][4], m[3][5], m[4][6]]
     d12 = [m[0][3], m[1][4], m[2][5], m[3][6]]
     diagonals = [d1, d2, d3, d4, d5, d6, d7, d8, d9, d10, d11, d12]
-    if
-      diagonals.find do |diagonal|
-        diagonal.join.include?("X X X X ")
-      end
-      puts "You Win!!"
-    elsif
-      @matrix.find do |row|
-        row.join.include?("X X X X ")
-      end
-      puts "You Win!!"
-    elsif
-      @matrix.transpose.find do |column|
-        column.join.include?("X X X X ")
-      end
-      puts "You Win!!"
-    else
 
-    end
-    if
-      diagonals.find do |diagonal|
-        diagonal.join.include?("O O O O ")
+    diagonals.find do |diagonal|
+      if  diagonal.join.include?("X X X X ")
+        return true
+      else
+        return false
+      # puts "You Win!!"
       end
-      puts "Sorry You Lose!!"
-    elsif
-      @matrix.find do |row|
-        row.join.include?("O O O O ")
-      end
-      puts "Sorry You Lose!!"
-    elsif
-      @matrix.transpose.find do |column|
-        column.join.include?("O O O O ")
-      end
-      puts "Sorry You Lose!!"
     end
   end
+
+  def horizontal_win_scan
+    m = @matrix
+    @matrix.find do |row|
+      if row.join.include?("X X X X ")
+        return true
+      else
+        return false
+      end
+    end
+  end
+
+  def vertical_win_scan
+    m = @matrix
+    @matrix.transpose.find do |column|
+      if column.join.include?("X X X X ")
+        return true
+      else
+        return false
+      end
+    end
+  end 
 end
+#     elsif
+#       @matrix.find do |row|
+#         row.join.include?("X X X X ")
+#       end
+#       puts "You Win!!"
+#     elsif
+#       @matrix.transpose.find do |column|
+#         column.join.include?("X X X X ")
+#       end
+#       puts "You Win!!"
+#     else
+#
+#     end
+#     if
+#       diagonals.find do |diagonal|
+#         diagonal.join.include?("O O O O ")
+#       end
+#       puts "Sorry You Lose!!"
+#     elsif
+#       @matrix.find do |row|
+#         row.join.include?("O O O O ")
+#       end
+#       puts "Sorry You Lose!!"
+#     elsif
+#       @matrix.transpose.find do |column|
+#         column.join.include?("O O O O ")
+#       end
+#       puts "Sorry You Lose!!"
+#     end
+#   end
+# end
+#**********************************************
 #snapshot creates a savestate of the matrix after moves have been played
 #Useful for making the spots_empty method work properly
   # def snapshot
