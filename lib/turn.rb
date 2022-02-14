@@ -25,7 +25,7 @@ class Turn
   #   column_choice = (["A ","B ","C ","D ","E ","F ","G "]).sample
   # end #this can be passed to the column class to run .playable?
 
-  def user_turn
+  def go
     @counter += 1
     if @player_type == :human
       puts "Please select a column:"
@@ -37,10 +37,17 @@ class Turn
       end
     end
 
-    def pick_column
-      player_column_choice = user_turn
-      return player_column_choice
+
+    def valid_input?
+      a = ["a", "b", "c", "d", "e", "f", "g"]
+      a.include?(go)
     end
+
+    # def return_to_user_input
+    #   if valid_input? == false
+    #     user_turn
+    #   end
+    # end
 
 end
 

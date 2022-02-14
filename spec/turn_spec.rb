@@ -21,13 +21,13 @@ RSpec.describe Turn do
     player1 = Player.new("human")
     turn_1 = Turn.new(:human)
     turn_1.stub(:gets).and_return("A")
-    expect(turn_1.user_turn).to eq("A")
+    expect(turn_1.go).to eq("A")
   end
 
   it "the turn counter increases by one at the start of a human turn" do
     player1 = Player.new("human")
     turn_1 = Turn.new(:human)
-    turn_1.user_turn
+    turn_1.go
     expect(turn_1.counter).to eq(1)
   end
 
@@ -35,7 +35,7 @@ RSpec.describe Turn do
     player2 = Player.new("robot")
     turn_2 = Turn.new(:robot)
     turn_2.stub(:select).and_return("B")
-    allow(turn_2.user_turn).to receive("B")
+    allow(turn_2.go).to receive("B")
   end #this test actually passes. Here's where I found it:
   # https://gist.github.com/Kotauror/6993000de0c53206a96879515438950d
       # down toward the bottom, a post from ZASMan on April 30, 2021.
@@ -44,25 +44,45 @@ RSpec.describe Turn do
     turn_1 = Turn.new(:human)
     player2 = Player.new("robot")
     turn_2 = Turn.new(:robot)
-    turn_1.user_turn
-    turn_2.user_turn
+    turn_1.go
+    turn_2.go
     expect(turn_2.counter).to eq(2)
   end
 
-  it "detects the column choice of a human player" do
+  # xit "detects the column choice of a human player" do
+  #   player1 = Player.new("human")
+  #   turn_1 = Turn.new(:human)
+  #   turn_1.go
+  #   turn_1.stub(:gets).and_return("A")
+  #   turn_1.pick_column
+  #   expect(turn_1.pick_column).to eq("A")
+  # end
+
+  # xit "detects the column choice of a robot player" do
+  #   player2 = Player.new("robot")
+  #   turn_2 = Turn.new(:robot)
+  #   turn_2.stub(:select).and_return("B")
+  #   allow(turn_2.go).to receive("B")
+  #   allow(turn_2.pick_column).to receive("B")
+  # end
+
+  it "can determine if an entry is valid" do
     player1 = Player.new("human")
     turn_1 = Turn.new(:human)
-    turn_1.user_turn
-    turn_1.stub(:gets).and_return("A")
-    turn_1.pick_column
-    expect(turn_1.pick_column).to eq("A")
+    turn_1.go
+    turn_1.stub(:gets).and_return("a")
+    turn_1.valid_input?
+    expect(turn_1.valid_input?).to eq(true)
   end
 
-  it "detects the column choice of a robot player" do
-    player2 = Player.new("robot")
-    turn_2 = Turn.new(:robot)
-    turn_2.stub(:select).and_return("B")
-    allow(turn_2.user_turn).to receive("B")
-    allow(turn_2.pick_column).to receive("B")
+  it "can determine if an entry is invalid" do
+    player1 = Player.new("human")
+    turn_1 = Turn.new(:human)
+    turn_1.go
+    turn_1.stub(:gets).and_return("p")
+    turn_1.valid_input?
+    expect(turn_1.valid_input?).to eq(false)
   end
+
+
 end
