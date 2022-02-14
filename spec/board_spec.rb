@@ -10,11 +10,11 @@ RSpec.describe Board do
     expect(new_game).to be_an_instance_of(Board)
   end
 
-  it "initializes a header, matrix, and columns" do
+  it "initializes a header and matrix" do
     new_game = Board.new
     expect(new_game.header.class).to eq(Array)
     expect(new_game.matrix.class).to eq(Array)
-    expect(new_game.columns.class).to eq(Array)
+    # expect(new_game.columns.class).to eq(Array)
   end
 
   it 'can render the game board' do
@@ -42,24 +42,54 @@ RSpec.describe Board do
 
   end
 
-   xit 'can take a snapshot of the current play state' do
-     new_game = Board.new
-     new_game.add_x(5,5)
-     new_game.add_o(2,3)
-     new_game.snapshot
-     expect(new_game.columns[5].include?("X ")).to eq(true)
-     expect(new_game.columns[3].include?("O ")).to eq(true)
-     expect(new_game.matrix[5].include?("X ")).to eq(true)
-     expect(new_game.matrix[2].include?("O ")).to eq(true)
+   # it 'can take a snapshot of the current play state' do
+   #   new_game = Board.new
+   #   new_game.add_x(5,5)
+   #   new_game.add_o(2,3)
+   #   new_game.snapshot
+   #   expect(new_game.columns[5].include?("X ")).to eq(true)
+   #   expect(new_game.columns[3].include?("O ")).to eq(true)
+   #   expect(new_game.matrix[5].include?("X ")).to eq(true)
+   #   expect(new_game.matrix[2].include?("O ")).to eq(true)
+   #
+   # end
 
-   end
+  # xit 'can check how many empty cells are in a column' do
+  #   new_game = Board.new
+  #   new_game.render
+  #   new_game.add_x(5,5)
+  #   # binding.pry
+  #   expect(new_game.cells_empty(5)).to eq(5)
+  # end
 
-  xit 'can check how many empty cells are in a column' do
+  it "can check for a diagonal win" do
     new_game = Board.new
-    new_game.render
-    new_game.add_x(5,5)
-    # binding.pry
-    expect(new_game.cells_empty(5)).to eq(5)
+    new_game.add_x(3,0)
+    new_game.add_x(2,1)
+    new_game.add_x(1,2)
+    new_game.add_x(0,3)
+     #binding.pry
+    new_game.diagonal_win_scan
+    expect(new_game.diagonal_win_scan).to eq(true)
+    end
+
+  it "can check for a horizonal win" do
+    new_game = Board.new
+    new_game.add_x(0,0)
+    new_game.add_x(0,1)
+    new_game.add_x(0,2)
+    new_game.add_x(0,3)
+    new_game.horizontal_win_scan
+    expect(new_game.horizontal_win_scan).to eq(true)
   end
 
+  it "can check for a vertical win" do
+    new_game = Board.new
+    new_game.add_x(0,0)
+    new_game.add_x(1,0)
+    new_game.add_x(2,0)
+    new_game.add_x(3,0)
+    new_game.vertical_win_scan
+    expect(new_game.vertical_win_scan).to eq(true)
+  end 
 end
