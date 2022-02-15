@@ -5,7 +5,7 @@ require './lib/board'
 #other requires go here
 
 class Turn
-  attr_reader :player_type, :column_choice, :board, :column_address
+  attr_reader :player_type, :column_choice, :board, :column_address, :column
   def initialize(player_type, board)
       @player_type = player_type
       @column_choice = ""
@@ -30,8 +30,10 @@ class Turn
 
 
     def valid_input?
-      a = ["a", "b", "c", "d", "e", "f", "g"]
-      a.include?(go)
+      ["a","b","c","d","e","f","g"].include?(@column_choice)
+
+      # a = ["a", "b", "c", "d", "e", "f", "g"]
+      # a.include?(go)
     end
 
     # binding.pry

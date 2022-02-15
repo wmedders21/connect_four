@@ -109,6 +109,7 @@ class Board
     # binding.pry
     if dots == [false, false, false, false, false, false]
       true
+      puts "The game is a Draw!"
     else false
     end
   end

@@ -36,11 +36,28 @@ class Game
     @board.render
     until @board.win_scan == true || @board.draw? == true
       @user_turn.go
-      # @user_turn.valid_input?
+      if @user_turn.valid_input? == false
+        puts "Please make a valid selection A - G"
+        until @user_turn.valid_input? == true
+          @user_turn.go
+        end
+      end
       @user_turn.process_input(@user_turn.column_choice)
       @user_turn.cells_empty
-      # @user_turn.playable?
       # binding.pry
+      if @user_turn.playable? == false
+        puts "That column is full, make another selection"
+        until @user_turn.playable? == true
+          @user_turn.go
+          if @user_turn.valid_input? == false
+            puts "Please make a valid selection A - G"
+            until @user_turn.valid_input? == true
+              @user_turn.go
+            end
+          end
+          @user_turn.process_input(@user_turn.column_choice)
+        end
+      end
       @board.add_x(@user_turn.low_point,@user_turn.column_address[@user_turn.column_choice])
       @board.render
       @board.win_scan
@@ -50,7 +67,13 @@ class Game
       @board.draw?
       @bot_turn.go
       @bot_turn.process_input(@bot_turn.column_choice)
-      # @bot_turn.playable?
+      if @bot_turn.playable? == false
+        puts "Computer selected a full column, stand by for retry."
+        until @bot_turn.playable? == true
+          @bot_turn.go
+          @bot_turn.process_input(@bot_turn.column_choice)
+        end
+      end
       @board.add_o(@bot_turn.low_point,@bot_turn.column_address[@bot_turn.column_choice])
       @board.render
       @board.win_scan
