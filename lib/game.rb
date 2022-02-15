@@ -17,70 +17,71 @@ class Game
     @bot_turn = Turn.new(player_2.type, @board)
   end
 
-  def start_menu
-    puts "WELCOME TO CONNECT FOUR! \n Please press p to play. Or, enter q to quit."
-     @start_menu_input = gets.chomp.upcase
-     # start_menu_options(start_menu_input)
-  end
-
-  def start_menu_options(start_menu_input)
-    case start_menu_input
-    when "P"
-      # binding.pry
-      start
-    when "Q"
-      exit!
-    end
-  end
-
+  # def start_menu
+  #   puts "WELCOME TO CONNECT FOUR! \n Please press p to play. Or, enter q to quit."
+  #    @start_menu_input = gets.chomp.upcase
+  #    # start_menu_options(start_menu_input)
+  # end
+  #
+  # def start_menu_options(start_menu_input)
+  #   case start_menu_input
+  #   when "P"
+  #     # binding.pry
+  #     start
+  #   when "Q"
+  #     exit!
+  #   end
+  # end
   def start
     @board.render
-    until @board.diagonal_win_scan || @board.vertical_win_scan || @board.horizontal_win_scan == true || @board.draw? == true
+    until @board.win_scan == true || @board.draw? == true
       @user_turn.go
+      if @user_turn.valid_input? == false
+        puts "Please make a valid selection A - G"
+        until @user_turn.valid_input? == true
+          @user_turn.go
+        end
+      end
       @user_turn.process_input(@user_turn.column_choice)
       @user_turn.cells_empty
+      # binding.pry
+      if @user_turn.playable? == false
+        puts "That column is full, make another selection"
+        until @user_turn.playable? == true
+          @user_turn.go
+          if @user_turn.valid_input? == false
+            puts "Please make a valid selection A - G"
+            until @user_turn.valid_input? == true
+              @user_turn.go
+            end
+          end
+          @user_turn.process_input(@user_turn.column_choice)
+        end
+      end
       @board.add_x(@user_turn.low_point,@user_turn.column_address[@user_turn.column_choice])
       @board.render
-      @board.diagonal_win_scan
-      if @board.diagonal_win_scan == true
-        break
-      end
-      @board.vertical_win_scan
-      if @board.vertical_win_scan == true
-        break
-      end
-      @board.horizontal_win_scan
-      if @board.horizontal_win_scan == true
+      @board.win_scan
+      if @board.win_scan == true
         break
       end
       @board.draw?
-      if @board.draw? == true
-        break
-      end
-
       @bot_turn.go
       @bot_turn.process_input(@bot_turn.column_choice)
-      @bot_turn.cells_empty
-      @board.add_x(@bot_turn.low_point,@bot_turn.column_address[@bot_turn.column_choice])
+      if @bot_turn.playable? == false
+        puts "Computer selected a full column, stand by for retry."
+        until @bot_turn.playable? == true
+          @bot_turn.go
+          @bot_turn.process_input(@bot_turn.column_choice)
+        end
+      end
+      @board.add_o(@bot_turn.low_point,@bot_turn.column_address[@bot_turn.column_choice])
       @board.render
-      @board.diagonal_win_scan
-      if @board.diagonal_win_scan == true
-        break
-      end
-      @board.vertical_win_scan
-      if @board.vertical_win_scan == true
-        break
-      end
-      @board.horizontal_win_scan
-      if @board.horizontal_win_scan == true
-        break
-      end
+      @board.win_scan
       @board.draw?
-      if @board.draw? == true
-        break
-      end
     end
-  end 
+  end
+
+
 end
 
   # def start_menu_input

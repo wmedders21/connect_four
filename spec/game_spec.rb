@@ -1,10 +1,9 @@
 require 'rspec'
 require 'pry'
-require_relative '../lib/board'
-require_relative '../lib/column'
-require_relative '../lib/player'
-require_relative '../lib/turn'
-require_relative '../lib/game'
+require_relative './lib/board'
+require_relative './lib/player'
+require_relative './lib/turn'
+require_relative './lib/game'
 
 RSpec.describe Game do
   it "exists" do
@@ -25,6 +24,10 @@ RSpec.describe Game do
      game_1.stub(:gets).and_return("P")
      expect(game_1.start_menu).to eq("P")
   end
+
+
+
+
 
   # xit "can take input and either start a game or quit" do
   #   game_1 = Game.new
