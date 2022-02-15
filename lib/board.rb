@@ -86,6 +86,19 @@ class Board
       end
     end
   end
+
+  def draw?
+    dots = []
+    @matrix.find_all do |row|
+      dots << row.include?(". ")
+    end
+    # binding.pry
+    if dots == [false, false, false, false, false, false]
+      true
+    else false
+    end
+  end
+
 end
 #     elsif
 #       @matrix.find do |row|

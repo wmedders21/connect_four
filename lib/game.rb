@@ -17,21 +17,21 @@ class Game
     @bot_turn = Turn.new(player_2.type, @board)
   end
 
-  def start_menu
-    puts "WELCOME TO CONNECT FOUR! \n Please press p to play. Or, enter q to quit."
-     @start_menu_input = gets.chomp.upcase
-     # start_menu_options(start_menu_input)
-  end
-
-  def start_menu_options(start_menu_input)
-    case start_menu_input
-    when "P"
-      # binding.pry
-      start
-    when "Q"
-      exit!
-    end
-  end
+  # def start_menu
+  #   puts "WELCOME TO CONNECT FOUR! \n Please press p to play. Or, enter q to quit."
+  #    @start_menu_input = gets.chomp.upcase
+  #    # start_menu_options(start_menu_input)
+  # end
+  #
+  # def start_menu_options(start_menu_input)
+  #   case start_menu_input
+  #   when "P"
+  #     # binding.pry
+  #     start
+  #   when "Q"
+  #     exit!
+  #   end
+  # end
 
   def start
     @board.render
@@ -80,7 +80,7 @@ class Game
         break
       end
     end
-  end 
+  end
 end
 
   # def start_menu_input
