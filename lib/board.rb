@@ -113,7 +113,7 @@ class Board
     else false
     end
   end
-  
+
 end
 #     elsif
 #       @matrix.find do |row|
@@ -147,25 +147,3 @@ end
 #   end
 # end
 #**********************************************
-#snapshot creates a savestate of the matrix after moves have been played
-#Useful for making the spots_empty method work properly
-  # def snapshot
-  #   return @matrix.transpose
-  # end
-#spots_empty() counts the number of available spaces in a particular column
-  # def cells_empty(column_location)
-  #   snapshot
-  #   @columns[column_location].count do |empty_cell|
-  #     empty_cell == ". "
-  #   end
-  # end
-# could add another method move_valid?
-# if spots_empty.count >= 1
-# return true
-#
-# and another method for placing the piece:
-# def place_piece
-# if player_type = "human" && move_valid == true
-#  add_x
-# else
-# add_o
