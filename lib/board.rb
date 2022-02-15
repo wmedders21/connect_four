@@ -115,35 +115,3 @@ class Board
   end
 
 end
-#     elsif
-#       @matrix.find do |row|
-#         row.join.include?("X X X X ")
-#       end
-#       puts "You Win!!"
-#     elsif
-#       @matrix.transpose.find do |column|
-#         column.join.include?("X X X X ")
-#       end
-#       puts "You Win!!"
-#     else
-#
-#     end
-#     if
-#       diagonals.find do |diagonal|
-#         diagonal.join.include?("O O O O ")
-#       end
-#       puts "Sorry You Lose!!"
-#     elsif
-#       @matrix.find do |row|
-#         row.join.include?("O O O O ")
-#       end
-#       puts "Sorry You Lose!!"
-#     elsif
-#       @matrix.transpose.find do |column|
-#         column.join.include?("O O O O ")
-#       end
-#       puts "Sorry You Lose!!"
-#     end
-#   end
-# end
-#**********************************************
