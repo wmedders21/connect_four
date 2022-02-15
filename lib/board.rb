@@ -1,10 +1,14 @@
 require 'pry'
 require 'rspec'
+require './lib/player'
+require './lib/turn'
+require './lib/column'
 # require './lib/grid_map'
 
 class Board
-  attr_reader :matrix, :header#, :columns
-  def initialize
+  attr_reader :matrix, :header
+   def initialize
+    # @board = header, matrix
 #header is just the letters above the matrix. No functionality
     @header = ["A ","B ","C ","D ","E ","F ","G "]
 #matrix is our 2d array
@@ -81,7 +85,7 @@ class Board
         return false
       end
     end
-  end 
+  end
 end
 #     elsif
 #       @matrix.find do |row|
