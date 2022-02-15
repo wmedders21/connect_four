@@ -19,14 +19,18 @@ class Game
 
   def start_menu
     puts "WELCOME TO CONNECT FOUR! \n Please press p to play. Or, enter q to quit."
-     start_menu_input = gets.chomp.upcase.strip
+    start_menu_input = gets.chomp.upcase.strip
+
+      until start_menu_input.include?("P") == true || start_menu_input.include?("Q") == true
+        puts "Please try again."
+      start_menu_input = gets.chomp.upcase.strip
+      end
       start_menu_options(start_menu_input)
   end
 
   def start_menu_options(start_menu_input)
     case start_menu_input
     when "P"
-      # binding.pry
       start
     when "Q"
       exit!
