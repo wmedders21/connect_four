@@ -80,7 +80,9 @@ class Game
       @board.win_scan
       @board.draw?
     end
-    exit!
+    game_2 = Game.new
+    game_2.start_menu
+    game_2.start_menu_options
   end
 
 
