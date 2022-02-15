@@ -17,13 +17,14 @@ class Turn
   end
 
   def go
-
     if @player_type == :human
       puts "Please select a column:"
         @column_choice = gets.chomp
       else
+        sleep(1)
         puts "It's the robot's turn!"
-        @column_choice = (["a ","b ","c ","d ","e ","f ","g "]).sample
+        sleep(1)
+        @column_choice = (["a","b","c","d","e","f","g"]).sample
       end
     end
 

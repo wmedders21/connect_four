@@ -35,7 +35,7 @@ class Game
 
   def start
     @board.render
-    until @board.diagonal_win_scan || @board.vertical_win_scan || @board.horizontal_win_scan == true || @board.draw? == true
+    until @board.diagonal_win_scan == true || @board.vertical_win_scan == true || @board.horizontal_win_scan == true || @board.draw? == true
       @user_turn.go
       @user_turn.process_input(@user_turn.column_choice)
       @user_turn.cells_empty
@@ -61,7 +61,7 @@ class Game
       @bot_turn.go
       @bot_turn.process_input(@bot_turn.column_choice)
       @bot_turn.cells_empty
-      @board.add_x(@bot_turn.low_point,@bot_turn.column_address[@bot_turn.column_choice])
+      @board.add_o(@bot_turn.low_point,@bot_turn.column_address[@bot_turn.column_choice])
       @board.render
       @board.diagonal_win_scan
       if @board.diagonal_win_scan == true
