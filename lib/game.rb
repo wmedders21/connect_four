@@ -32,55 +32,33 @@ class Game
   #     exit!
   #   end
   # end
-
   def start
     @board.render
-    until @board.diagonal_win_scan == true || @board.vertical_win_scan == true || @board.horizontal_win_scan == true || @board.draw? == true
+    until @board.win_scan == true || @board.draw? == true
       @user_turn.go
+      # @user_turn.valid_input?
       @user_turn.process_input(@user_turn.column_choice)
       @user_turn.cells_empty
+      # @user_turn.playable?
+      # binding.pry
       @board.add_x(@user_turn.low_point,@user_turn.column_address[@user_turn.column_choice])
       @board.render
-      @board.diagonal_win_scan
-      if @board.diagonal_win_scan == true
-        break
-      end
-      @board.vertical_win_scan
-      if @board.vertical_win_scan == true
-        break
-      end
-      @board.horizontal_win_scan
-      if @board.horizontal_win_scan == true
+      @board.win_scan
+      if @board.win_scan == true
         break
       end
       @board.draw?
-      if @board.draw? == true
-        break
-      end
-
       @bot_turn.go
       @bot_turn.process_input(@bot_turn.column_choice)
-      @bot_turn.cells_empty
+      # @bot_turn.playable?
       @board.add_o(@bot_turn.low_point,@bot_turn.column_address[@bot_turn.column_choice])
       @board.render
-      @board.diagonal_win_scan
-      if @board.diagonal_win_scan == true
-        break
-      end
-      @board.vertical_win_scan
-      if @board.vertical_win_scan == true
-        break
-      end
-      @board.horizontal_win_scan
-      if @board.horizontal_win_scan == true
-        break
-      end
+      @board.win_scan
       @board.draw?
-      if @board.draw? == true
-        break
-      end
     end
   end
+
+
 end
 
   # def start_menu_input
