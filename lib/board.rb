@@ -113,7 +113,7 @@ class Board
     else false
     end
   end
-
+  
 end
 #     elsif
 #       @matrix.find do |row|

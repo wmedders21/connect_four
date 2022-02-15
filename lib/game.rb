@@ -80,6 +80,7 @@ class Game
       @board.win_scan
       @board.draw?
     end
+    exit!
   end
 
 
