@@ -55,16 +55,21 @@ class Board
         diagonal.join.include?("X X X X ")
       end
       puts "You Win!!"
+      return true
     elsif
       @matrix.find do |row|
         row.join.include?("X X X X ")
       end
       puts "You Win!!"
+      return true
+
     elsif
       @matrix.transpose.find do |column|
         column.join.include?("X X X X ")
       end
       puts "You Win!!"
+      return true
+
     else
 
     end
@@ -73,16 +78,34 @@ class Board
         diagonal.join.include?("O O O O ")
       end
       puts "Sorry You Lose!!"
+      return true
+
     elsif
       @matrix.find do |row|
         row.join.include?("O O O O ")
       end
       puts "Sorry You Lose!!"
+      return true
+
     elsif
       @matrix.transpose.find do |column|
         column.join.include?("O O O O ")
       end
       puts "Sorry You Lose!!"
+      return true
+
+    end
+  end
+
+  def draw?
+    dots = []
+    @matrix.find_all do |row|
+      dots << row.include?(". ")
+    end
+    # binding.pry
+    if dots == [false, false, false, false, false, false]
+      true
+    else false
     end
   end
 end

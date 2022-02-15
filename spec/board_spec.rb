@@ -10,11 +10,10 @@ RSpec.describe Board do
     expect(new_game).to be_an_instance_of(Board)
   end
 
-  it "initializes a header, matrix, and columns" do
+  it "default header and matrix" do
     new_game = Board.new
     expect(new_game.header.class).to eq(Array)
     expect(new_game.matrix.class).to eq(Array)
-    expect(new_game.columns.class).to eq(Array)
   end
 
   it 'can render the game board' do
@@ -42,24 +41,68 @@ RSpec.describe Board do
 
   end
 
-   xit 'can take a snapshot of the current play state' do
+   xit 'check for a horizontal win' do
      new_game = Board.new
-     new_game.add_x(5,5)
-     new_game.add_o(2,3)
-     new_game.snapshot
-     expect(new_game.columns[5].include?("X ")).to eq(true)
-     expect(new_game.columns[3].include?("O ")).to eq(true)
-     expect(new_game.matrix[5].include?("X ")).to eq(true)
-     expect(new_game.matrix[2].include?("O ")).to eq(true)
-
+     new_game.add_x(0,2)
+     new_game.add_x(0,3)
+     new_game.add_x(0,4)
+     new_game.add_x(0,5)
+binding.pry
+     new_game.win_scan
+     expect(new_game.win_scan).to eq()
    end
 
-  xit 'can check how many empty cells are in a column' do
+  it 'can check for a draw' do
     new_game = Board.new
     new_game.render
+    expect(new_game.draw?).to eq(false)
+
+
+    new_game.add_x(0,0)
+    new_game.add_x(0,1)
+    new_game.add_x(0,2)
+    new_game.add_o(0,3)
+    new_game.add_x(0,4)
+    new_game.add_x(0,5)
+    new_game.add_x(0,6)
+    new_game.add_x(1,0)
+    new_game.add_x(1,1)
+    new_game.add_x(1,2)
+    new_game.add_o(1,3)
+    new_game.add_x(1,4)
+    new_game.add_x(1,5)
+    new_game.add_x(1,6)
+    new_game.add_x(2,0)
+    new_game.add_x(2,1)
+    new_game.add_o(2,2)
+    new_game.add_o(2,3)
+    new_game.add_o(2,4)
+    new_game.add_x(2,5)
+    new_game.add_x(2,6)
+    new_game.add_o(3,0)
+    new_game.add_o(3,1)
+    new_game.add_o(3,2)
+    new_game.add_x(3,3)
+    new_game.add_o(3,4)
+    new_game.add_o(3,5)
+    new_game.add_o(3,6)
+    new_game.add_x(4,0)
+    new_game.add_x(4,1)
+    new_game.add_x(4,2)
+    new_game.add_o(4,3)
+    new_game.add_x(4,4)
+    new_game.add_x(4,5)
+    new_game.add_x(4,6)
+    new_game.add_x(5,0)
+    new_game.add_x(5,1)
+    new_game.add_x(5,2)
+    new_game.add_o(5,3)
+    new_game.add_x(5,4)
     new_game.add_x(5,5)
+    new_game.add_x(5,6)
+    new_game.render
     # binding.pry
-    expect(new_game.cells_empty(5)).to eq(5)
+    expect(new_game.draw?).to eq(true)
   end
 
 end

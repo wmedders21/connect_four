@@ -5,12 +5,13 @@ require './lib/board'
 #other requires go here
 
 class Turn
-  attr_reader :player_type, :column_choice, :board
+  attr_reader :player_type, :column_choice, :board, :column_address
   def initialize(player_type, board)
       @player_type = player_type
       @column_choice = ""
       @column = []
       @board = board
+      @column_address = {"a" => 0, "b" => 1, "c" => 2, "d" => 3, "e" => 4, "f" => 5, "g" => 6}
 
 
   end
@@ -20,8 +21,10 @@ class Turn
       puts "Please select a column:"
         @column_choice = gets.chomp
       else
+        sleep(1)
         puts "It's the robot's turn!"
-        @column_choice = (["a ","b ","c ","d ","e ","f ","g "]).sample
+        sleep(1)
+        @column_choice = (["a", "b", "c", "d", "e", "f", "g"]).sample
       end
     end
 
@@ -63,6 +66,12 @@ class Turn
     def low_point
       bottom = self.cells_empty - 1
     end
+
+    # def column_location(column_choice)
+    #   location = {"a" => 0, "b" => 1, "c" => 2, "d" => 3, "e" => 4, "f" => 5, "g" => 6}
+    #   @column_address = location(column_choice)
+    # end
+    # end
 
 
 
