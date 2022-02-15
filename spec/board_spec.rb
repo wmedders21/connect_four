@@ -91,5 +91,59 @@ RSpec.describe Board do
     new_game.add_x(3,0)
     new_game.vertical_win_scan
     expect(new_game.vertical_win_scan).to eq(true)
-  end 
+  end
+
+  it 'can check for a draw' do
+    new_game = Board.new
+    new_game.render
+    expect(new_game.draw?).to eq(false)
+
+
+    new_game.add_x(0,0)
+    new_game.add_x(0,1)
+    new_game.add_x(0,2)
+    new_game.add_o(0,3)
+    new_game.add_x(0,4)
+    new_game.add_x(0,5)
+    new_game.add_x(0,6)
+    new_game.add_x(1,0)
+    new_game.add_x(1,1)
+    new_game.add_x(1,2)
+    new_game.add_o(1,3)
+    new_game.add_x(1,4)
+    new_game.add_x(1,5)
+    new_game.add_x(1,6)
+    new_game.add_x(2,0)
+    new_game.add_x(2,1)
+    new_game.add_o(2,2)
+    new_game.add_o(2,3)
+    new_game.add_o(2,4)
+    new_game.add_x(2,5)
+    new_game.add_x(2,6)
+    new_game.add_o(3,0)
+    new_game.add_o(3,1)
+    new_game.add_o(3,2)
+    new_game.add_x(3,3)
+    new_game.add_o(3,4)
+    new_game.add_o(3,5)
+    new_game.add_o(3,6)
+    new_game.add_x(4,0)
+    new_game.add_x(4,1)
+    new_game.add_x(4,2)
+    new_game.add_o(4,3)
+    new_game.add_x(4,4)
+    new_game.add_x(4,5)
+    new_game.add_x(4,6)
+    new_game.add_x(5,0)
+    new_game.add_x(5,1)
+    new_game.add_x(5,2)
+    new_game.add_o(5,3)
+    new_game.add_x(5,4)
+    new_game.add_x(5,5)
+    new_game.add_x(5,6)
+    new_game.render
+    # binding.pry
+    expect(new_game.draw?).to eq(true)
+  end
+
 end
