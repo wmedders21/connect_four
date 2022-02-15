@@ -20,7 +20,7 @@ class Game
   def start_menu
     puts "WELCOME TO CONNECT FOUR! \n Please press p to play. Or, enter q to quit."
      start_menu_input = gets.chomp.upcase.strip
-     start_menu_options(start_menu_input)
+      start_menu_options(start_menu_input)
   end
 
   def start_menu_options(start_menu_input)
@@ -82,11 +82,5 @@ class Game
     end
     game_2 = Game.new
     game_2.start_menu
-    game_2.start_menu_options
   end
-
-
 end
-
-  # def start_menu_input
-  #   input = gets.chomp
