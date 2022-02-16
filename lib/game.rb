@@ -109,7 +109,7 @@ class Game
   def start_2
     @board.render
     until @board.win_scan == true || @board.draw? == true
-      puts "#{@player_1_name} turn"
+      puts "It's your turn, #{@player_1_name}"
       @user_turn.go
       if @user_turn.valid_input? == false
         puts "Please make a valid selection A - G"
@@ -139,7 +139,7 @@ class Game
         break
       end
       @board.draw?
-      puts "#{@player_2_name} turn"
+      puts "It's your turn, #{@player_2_name}"
       @user_2_turn.go
       if @user_2_turn.valid_input? == false
         puts "Please make a valid selection A - G"
