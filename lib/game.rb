@@ -3,13 +3,16 @@ require './lib/player'
 require './lib/turn'
 
 class Game
-    attr_reader :player_1, :player_2, :board, :user_turn, :bot_turn
+    attr_reader :player_1, :player_2, :board, :user_turn, :bot_turn, :player_1_name, :player_2_name
   def initialize
     @player_1 = Player.new(:human)
     @player_2 = Player.new(:robot)
     @board = Board.new
     @user_turn = Turn.new(player_1.type, @board)
+    @user_2_turn = Turn.new(player_1.type, @board)
     @bot_turn = Turn.new(player_2.type, @board)
+    @player_1_name = ""
+    @player_2_name = ""
   end
 
   def start_menu
@@ -40,9 +43,18 @@ class Game
       when "1"
         start
       when "2"
-        start_2
+        player_names
       end
     end
+
+
+  def player_names
+    puts "Enter name for Player 1."
+      @player_1_name = gets.chomp
+    puts "Enter name for Player 2"
+      @player_2_name = gets.chomp
+    start_2
+  end
 
   def start
     @board.render
@@ -97,7 +109,7 @@ class Game
   def start_2
     @board.render
     until @board.win_scan == true || @board.draw? == true
-      puts "Player 1 turn"
+      puts "#{@player_1_name} turn"
       @user_turn.go
       if @user_turn.valid_input? == false
         puts "Please make a valid selection A - G"
@@ -127,30 +139,30 @@ class Game
         break
       end
       @board.draw?
-      puts "Player 2 turn"
-      @user_turn.go
-      if @user_turn.valid_input? == false
+      puts "#{@player_2_name} turn"
+      @user_2_turn.go
+      if @user_2_turn.valid_input? == false
         puts "Please make a valid selection A - G"
-        until @user_turn.valid_input? == true
-          @user_turn.go
+        until @user_2_turn.valid_input? == true
+          @user_2_turn.go
         end
       end
-      @user_turn.process_input(@user_turn.column_choice)
-      @user_turn.cells_empty
-      if @user_turn.playable? == false
+      @user_2_turn.process_input(@user_2_turn.column_choice)
+      @user_2_turn.cells_empty
+      if @user_2_turn.playable? == false
         puts "That column is full, make another selection"
-        until @user_turn.playable? == true
-          @user_turn.go
-          if @user_turn.valid_input? == false
+        until @user_2_turn.playable? == true
+          @user_2_turn.go
+          if @user_2_turn.valid_input? == false
             puts "Please make a valid selection A - G"
-            until @user_turn.valid_input? == true
-              @user_turn.go
+            until @user_2_turn.valid_input? == true
+              @user_2_turn.go
             end
           end
-          @user_turn.process_input(@user_turn.column_choice)
+          @user_2_turn.process_input(@user_2_turn.column_choice)
         end
       end
-      @board.add_o(@user_turn.low_point,@user_turn.column_address[@user_turn.column_choice])
+      @board.add_o(@user_2_turn.low_point,@user_2_turn.column_address[@user_2_turn.column_choice])
       @board.render
       @board.win_scan
       @board.draw?
