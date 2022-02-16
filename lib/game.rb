@@ -167,7 +167,7 @@ class Game
       @board.win_scan
       @board.draw?
     end
-    game_2 = Game.new
-    game_2.start_menu
+    game_1 = Game.new
+    game_1.start_menu
   end
 end

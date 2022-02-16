@@ -1,3 +1,5 @@
+
+
 class Board
   attr_reader :matrix, :header
    def initialize
@@ -46,19 +48,19 @@ class Board
       diagonals.find do |diagonal|
         diagonal.join.include?("X X X X ")
       end
-      puts "You Win!!"
+      puts "Player 1 Wins!!"
       return true
     elsif
       @matrix.find do |row|
         row.join.include?("X X X X ")
       end
-      puts "You Win!!"
+      puts "Player 1 Wins!!"
       return true
     elsif
       @matrix.transpose.find do |column|
         column.join.include?("X X X X ")
       end
-      puts "You Win!!"
+      puts "Player 1 Wins!!"
       return true
     else
     end
@@ -67,19 +69,19 @@ class Board
       diagonals.find do |diagonal|
         diagonal.join.include?("O O O O ")
       end
-      puts "Sorry You Lose!!"
+      puts "Player 2 Wins!!"
       return true
     elsif
       @matrix.find do |row|
         row.join.include?("O O O O ")
       end
-      puts "Sorry You Lose!!"
+      puts "Player 2 Wins!!"
       return true
     elsif
       @matrix.transpose.find do |column|
         column.join.include?("O O O O ")
       end
-      puts "Sorry You Lose!!"
+      puts "Player 2 Wins!!"
       return true
     end
   end
