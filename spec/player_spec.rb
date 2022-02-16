@@ -12,10 +12,4 @@ RSpec.describe Player do
     player = Player.new("human")
     expect(player.type).to eq("human")
   end
-
-  it "can pass the right turn mode to the column" do
-    player = Player.new("human")
-#binding.pry
-    expect(player.turn_mode).to eq("human")
-  end
 end
