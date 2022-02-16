@@ -1,17 +1,7 @@
-require 'pry'
-require 'rspec'
-require './lib/player'
-require './lib/turn'
-require './lib/column'
-# require './lib/grid_map'
-
 class Board
   attr_reader :matrix, :header
    def initialize
-    # @board = header, matrix
-#header is just the letters above the matrix. No functionality
     @header = ["A ","B ","C ","D ","E ","F ","G "]
-#matrix is our 2d array
     @matrix = [
       [". ",". ",". ",". ",". ",". ",". "],
       [". ",". ",". ",". ",". ",". ",". "],
@@ -20,21 +10,19 @@ class Board
       [". ",". ",". ",". ",". ",". ",". "],
       [". ",". ",". ",". ",". ",". ",". "]
     ]
-#columns allows us access to the y axis in array form
-    # @columns = @matrix.transpose
   end
-#render prints the header and matrix during gameplay
+
   def render
     puts @header.join
     @matrix.each do |row|
       puts row.join
     end
   end
-#add_x takes coordinate arguments and places an X on the board
+
   def add_x(row, column)
     @matrix[row][column] = "X "
   end
-  #add_o takes coordinate arguments and places an O on the board
+
   def add_o(row, column)
     @matrix[row][column] = "O "
   end
@@ -66,38 +54,33 @@ class Board
       end
       puts "You Win!!"
       return true
-
     elsif
       @matrix.transpose.find do |column|
         column.join.include?("X X X X ")
       end
       puts "You Win!!"
       return true
-
     else
-
     end
+
     if
       diagonals.find do |diagonal|
         diagonal.join.include?("O O O O ")
       end
       puts "Sorry You Lose!!"
       return true
-
     elsif
       @matrix.find do |row|
         row.join.include?("O O O O ")
       end
       puts "Sorry You Lose!!"
       return true
-
     elsif
       @matrix.transpose.find do |column|
         column.join.include?("O O O O ")
       end
       puts "Sorry You Lose!!"
       return true
-
     end
   end
 
@@ -106,12 +89,11 @@ class Board
     @matrix.find_all do |row|
       dots << row.include?(". ")
     end
-    # binding.pry
     if dots == [false, false, false, false, false, false]
-      true
       puts "The game is a Draw!"
-    else false
+      return true
+    else
+      return false
     end
   end
-
 end
