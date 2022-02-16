@@ -14,7 +14,7 @@ class Turn
       @column_choice = gets.chomp
     else
       sleep(1)
-      puts "It's the robot's turn!"
+      puts "It's Player 2's turn!"
       sleep(1)
       @column_choice = (["a","b","c","d","e","f","g"]).sample
     end
