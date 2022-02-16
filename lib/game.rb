@@ -13,7 +13,8 @@ class Game
   end
 
   def start_menu
-    puts "WELCOME TO CONNECT FOUR! \n Please press p to play. Or, enter q to quit."
+    puts "WELCOME TO CONNECT FOUR!"
+    puts "Please press p to play. Or, enter q to quit."
     start_menu_input = gets.chomp.upcase.strip
       until start_menu_input.include?("P") == true || start_menu_input.include?("Q") == true
         puts "Please try again."
