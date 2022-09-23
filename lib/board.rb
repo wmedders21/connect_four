@@ -49,18 +49,21 @@ class Board
         diagonal.join.include?("X X X X ")
       end
       puts "Player 1 Wins!!"
+      celebrate
       return true
     elsif
       @matrix.find do |row|
         row.join.include?("X X X X ")
       end
       puts "Player 1 Wins!!"
+      celebrate
       return true
     elsif
       @matrix.transpose.find do |column|
         column.join.include?("X X X X ")
       end
       puts "Player 1 Wins!!"
+      celebrate
       return true
     else
     end
@@ -70,18 +73,21 @@ class Board
         diagonal.join.include?("O O O O ")
       end
       puts "Player 2 Wins!!"
+      celebrate
       return true
     elsif
       @matrix.find do |row|
         row.join.include?("O O O O ")
       end
       puts "Player 2 Wins!!"
+      celebrate
       return true
     elsif
       @matrix.transpose.find do |column|
         column.join.include?("O O O O ")
       end
       puts "Player 2 Wins!!"
+      celebrate
       return true
     end
   end
@@ -93,9 +99,27 @@ class Board
     end
     if dots == [false, false, false, false, false, false]
       puts "The game is a Draw!"
+      celebrate
       return true
     else
       return false
     end
+  end
+
+  def celebrate
+    sleep(2)
+    count = 0
+    array = [" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " "]
+    array.each do |char|
+      system("clear")
+      sleep(0.1)
+      array[count] = "😀"
+      array[(-1 * count)] = "😀"
+      p array.join
+      array[count] = " "
+      array[(-1 * count)] = " "
+      count += 1
+    end
+    system("clear")
   end
 end

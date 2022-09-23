@@ -32,6 +32,7 @@ class Game
     end
 
   def play_mode
+    system("clear")
     puts "Enter 1 for single-player mode."
     puts "Enter 2 for 2-player mode."
     mode_input = gets.chomp.upcase.strip
@@ -49,6 +50,7 @@ class Game
 
 
   def player_names
+    system("clear")
     puts "Enter name for Player 1."
       @player_1_name = gets.chomp
     puts "Enter name for Player 2"
@@ -57,6 +59,7 @@ class Game
   end
 
   def start
+    system("clear")
     @board.render
     until @board.win_scan == true || @board.draw? == true
       @user_turn.go
@@ -82,8 +85,9 @@ class Game
         end
       end
       @board.add_x(@user_turn.low_point,@user_turn.column_address[@user_turn.column_choice])
+      system("clear")
       @board.render
-      @board.win_scan
+      # @board.win_scan
       if @board.win_scan == true
         break
       end
@@ -98,8 +102,9 @@ class Game
         end
       end
       @board.add_o(@bot_turn.low_point,@bot_turn.column_address[@bot_turn.column_choice])
+      system("clear")
       @board.render
-      @board.win_scan
+      # @board.win_scan
       @board.draw?
     end
     game_2 = Game.new
@@ -107,6 +112,7 @@ class Game
   end
 
   def start_2
+    system("clear")
     @board.render
     until @board.win_scan == true || @board.draw? == true
       puts "It's your turn, #{@player_1_name}"
@@ -133,8 +139,9 @@ class Game
         end
       end
       @board.add_x(@user_turn.low_point,@user_turn.column_address[@user_turn.column_choice])
+      system("clear")
       @board.render
-      @board.win_scan
+      # @board.win_scan
       if @board.win_scan == true
         break
       end
@@ -163,8 +170,9 @@ class Game
         end
       end
       @board.add_o(@user_2_turn.low_point,@user_2_turn.column_address[@user_2_turn.column_choice])
+      system("clear")
       @board.render
-      @board.win_scan
+      # @board.win_scan
       @board.draw?
     end
     game_1 = Game.new
